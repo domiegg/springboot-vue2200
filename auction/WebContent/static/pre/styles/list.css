@@ -1,0 +1,348 @@
+
+.list-content .sorts-content1 {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 190px;
+}
+
+.hot-sale {
+    width: 190px;
+    margin-top: 15px;
+    border: 1px solid #e0e0e0;
+    font-size: 12px;
+}
+.hot-sale-title {
+    height: 35px;
+    padding: 0 10px;
+    line-height: 35px;
+    background-color: #f7f7f7;
+    font-size: 14px;
+    color: #333;
+}
+.hot-sale-content dl {
+    margin: 15px 0 8px;
+    padding: 0 10px;
+}
+.hot-sale-content dd {
+    width: 102px;
+}
+.hot-sale-content img {
+    width: 60px;
+    margin-right: 6px;
+}
+.hot-sale-content dt,
+.hot-sale-content dd {
+    float: left;
+}
+.hot-sale-content dd a {
+    margin-bottom: 5px;
+    display: block;
+    color: #999999;
+}
+.hot-sale-content strong {
+    color: #cd0606;
+    font-weight: normal;
+}
+.link-nav {
+    height: 35px;
+    line-height: 35px;
+}
+.link-nav a,
+.list-pro {
+    font-size: 12px;
+}
+.link-nav span {
+    padding: 0 5px;
+    color: #a6a6a6;
+}
+.right-content {
+    max-width: 940px;
+}
+.pro-chose {
+    margin: 15px 0;
+}
+.pro-chose h6 {
+    height: 35px;
+    line-height: 35px;
+    padding-left: 15px;
+    border-top: 1px solid #e0e0e0;
+    background-color: #f4f4f4;
+}
+.pro-chose strong {
+    font-size: 14px;
+    font-weight: normal;
+}
+.pro-chose li {
+    padding: 5px 0;
+    border-bottom: 1px dotted #e0e0e0;
+    font-size: 12px;
+    line-height: 35px;
+}
+.pro-chose li span {
+    width: 80px;
+    float: left;
+    text-align: right;
+    color: #999;
+}
+.pro-chose input[type='checkbox'] {
+    margin: 5px;
+}
+.pro-chose li p {
+    display: inline-block;
+    padding-right: 25px;
+}
+.pro-chose li a {
+    width: 40px;
+    height: 20px;
+    margin-top: 3px;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: inline-block;
+    line-height: 20px;
+    background-color: #559b0d;
+    color: #ffffff;
+    text-align: center;
+}
+.list-pro {
+    height: 42px;
+    padding: 0 15px;
+    margin-bottom: 15px;
+    background-color: #f4f4f4;
+    border: 1px solid #e0e0e0;
+}
+.list-pro .leftBar {
+    padding-top: 10px;
+}
+.list-pro .leftBar span {
+    padding-right: 30px;
+}
+.list-pro p a {
+    height: 20px;
+    padding-right: 18px;
+    display: inline-block;
+    margin: 0 3px;
+    border: 1px solid #e0e0e0;
+    text-indent: 5px;
+}
+.list-pro .rise {
+    background: url("../images/list_ico3a.png") 32px center no-repeat;
+}
+.list-pro .dis-rise {
+    background: url("../images/list_ico4%20a.png") 32px center no-repeat;
+}
+.list-pro li {
+    width: 22px;
+    height: 19px;
+    float: left;
+    margin-top: 7px;
+    margin-left: 10px;
+}
+.list-pro .on {
+    background-color: #358000;
+}
+.list-pro ul a {
+    width: 22px;
+    height: 19px;
+    display: inline-block;
+    overflow: hidden;
+    border: 1px solid #e8e8e8;
+}
+.list-pro .img {
+    background: url("../images/list_ico12.png") 0 -20px no-repeat;
+}
+.list-pro .list_img {
+    background: url("../images/list_ico13.png") 0 0 no-repeat;
+}
+.img-display {
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 30px;
+    margin-bottom: 25px;
+}
+.img-display .block-list {
+    width: 230px;
+    padding: 10px;
+    margin: 10px 0;
+    display: inline-block;
+    font-size: 12px;
+}
+.img-display .block-list:hover {
+    box-shadow: 1px 1px 4px 0 #999999;
+}
+.img-display .block-list img {
+    width: 100%;
+}
+.img-display .price strong {
+    padding-top: 25px;
+    display: block;
+    font-size: 16px;
+    color: #cd0606;
+    font-weight: normal;
+}
+.market-price {
+    color: #999;
+    line-height: 30px;
+}
+.market-price del {
+    padding-left: 5px;
+}
+.market-price p {
+    float: right;
+}
+.market-price a {
+    color: #005aa0;
+}
+.buy-btn a {
+    margin-top: 5px;
+    padding: 3px 10px;
+    display: inline-block;
+    border: 1px solid #d9d9d9;
+}
+.buy-btn a:hover {
+    text-decoration: none;
+    background-color: #c80606;
+    color: #ffffff;
+}
+.page p {
+    margin-left: 10px;
+    display: inline-block;
+}
+.page a {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    border: 1px solid #e0e0e0;
+    text-align: center;
+}
+.page a:hover,
+.page a.current {
+    background-color: #60a411;
+    color: #ffffff;
+    text-decoration: none;
+    border: 1px solid #60a411;
+}
+
+
+/*==============================================媒体查询==================================*/
+
+@media (max-width:767px) {
+    .list-content .sorts-content1,
+    .hot-sale {
+        display: none;
+    }
+    .right-content {
+        width: 100%;
+    }
+    .pro-ads img {
+        width: 109px;
+    }
+    .pro-ads a:last-child img {
+        width: 61px;
+    }
+
+    .list-pro {
+        padding: 0 8px;
+    }
+    .list-pro li {
+        margin-top: 10px;
+    }
+    .img-display ul {
+        text-align: center;
+    }
+    .img-display li {
+        width: 140px;
+        margin: 0;
+    }
+    .market-price p {
+        float: none;
+    }
+
+    .img-display {
+        padding-bottom: 0;
+        margin-bottom: 12px;
+    }
+    .page {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .page span {
+        display: inline-block;
+        padding-bottom: 10px;
+    }
+    .list-pro .rightBar {
+        display: none;
+    }
+    .pro-chose li span {
+        width: 50px;
+    }
+    .img-display .price strong {
+        padding-top: 10px;
+    }
+    .pro-chose li {
+        padding: 0;
+        line-height: 30px;
+    }
+    .pro-chose li a {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .pro-chose li p {
+        padding-right: 5px;
+    }
+
+}
+
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .container-fluid {
+        padding-right: 0;
+    }
+    .list-content .sorts-content1 {
+        display: block;
+    }
+    .details-nav {
+        width: 530px;
+        left: 190px;
+    }
+    .navbar-nav>.sorts>a {
+        width: 190px;
+    }
+    .nav>li>a {
+        padding: 8px 7px;
+    }
+    .right-content {
+        max-width: 518px;
+        overflow: hidden;
+    }
+    .pro-ads img {
+        width: 195px;
+    }
+    .pro-ads a:last-child img {
+        width: 107px;
+    }
+    .img-display li {
+        margin: 10px 5px;
+    }
+}
+
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .container-fluid {
+        padding-right: 0;
+    }
+    .right-content {
+        max-width: 740px;
+        overflow: hidden;
+    }
+    .pro-ads img {
+        width: 275px;
+    }
+    .pro-ads a:last-child img {
+        width: 155px;
+    }
+    .img-display li {
+        margin-right: 5px;
+    }
+}

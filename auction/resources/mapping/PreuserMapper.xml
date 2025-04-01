@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ognice.dao.PreuserMapper">
+	<resultMap id="BaseResultMap" type="com.ognice.domain.Preuser">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="nickname" property="nickname" jdbcType="VARCHAR" />
+		<result column="username" property="username" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+		<result column="created" property="created" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List"> `id` , `nickname` , `username` , `password` , `created`
+	</sql>
+	<select id="login" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from preuser where username = #{0} AND password = #{1}
+	</select>
+	<select id="selectPreuserById" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from preuser where id = #{id,jdbcType=BIGINT}
+	</select>
+	<select id="page" parameterType="com.ognice.controller.common.PageSearchParam" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from preuser where 1=1
+		<if test="params!=null">
+			<if test="params.id !=null and params.id!=''"> AND `id` = #{params.id}
+			</if>
+			<if test="params.nickname !=null and params.nickname!=''"> AND `nickname` like concat('%',#{params.nickname},'%')
+			</if>
+			<if test="params.username !=null and params.username!=''"> AND `username` like concat('%',#{params.username},'%')
+			</if>
+			<if test="params.password !=null and params.password!=''"> AND `password` like concat('%',#{params.password},'%')
+			</if>
+			<if test="params.created !=null and params.created!=''"> AND `created` = #{params.created}
+			</if>
+		</if>
+		order by id desc
+		<if test="page!=null"> limit #{page},#{pagesize}
+		</if>
+	</select>
+	<delete id="delete" parameterType="java.lang.Long"> delete from preuser where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.ognice.domain.Preuser"> insert into preuser ( `id` , `nickname` , `username` , `password` , `created` ) values ( #{id,jdbcType=INTEGER} , #{nickname,jdbcType=VARCHAR} , #{username,jdbcType=VARCHAR} , #{password,jdbcType=VARCHAR} , #{created,jdbcType=TIMESTAMP} )
+	</insert>
+	<update id="update" parameterType="com.ognice.domain.Preuser">
+		update preuser
+		<set>
+			<if test="id != null"> `id`= #{id,jdbcType=INTEGER},
+			</if>
+			<if test="nickname != null"> `nickname`= #{nickname,jdbcType=VARCHAR},
+			</if>
+			<if test="username != null"> `username`= #{username,jdbcType=VARCHAR},
+			</if>
+			<if test="password != null"> `password`= #{password,jdbcType=VARCHAR},
+			</if>
+			<if test="created != null"> `created`= #{created,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+</mapper>

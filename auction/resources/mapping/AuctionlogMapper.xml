@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ognice.dao.AuctionlogMapper">
+	<resultMap id="BaseResultMap" type="com.ognice.domain.Auctionlog">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="uid" property="uid" jdbcType="INTEGER" />
+		<result column="username" property="username" jdbcType="VARCHAR" />
+		<result column="pid" property="pid" jdbcType="INTEGER" />
+		<result column="ptitle" property="ptitle" jdbcType="VARCHAR" />
+		<result column="price" property="price" jdbcType="DOUBLE" />
+		<result column="created" property="created" jdbcType="TIMESTAMP" />
+		<result column="nowprice" property="nowprice" jdbcType="DOUBLE" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		`id`
+		,
+		`uid`
+		,
+		`username`
+		,
+		`pid`
+		,
+		`ptitle`
+		,
+		`price`
+		,
+		`created`
+		,
+		`nowprice`
+		
+	</sql>
+	<select id="selectAuctionlogById" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from auctionlog where id = #{id,jdbcType=BIGINT}
+	</select>
+	<select id="page" parameterType="com.ognice.controller.common.PageSearchParam" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from auctionlog where 1=1
+		<if test="params!=null">
+		<if test="params.id !=null and params.id!=''">
+		AND `id` = #{params.id}
+		</if>
+		<if test="params.uid !=null and params.uid!=''">
+		AND `uid` = #{params.uid}
+		</if>
+		<if test="params.username !=null and params.username!=''">
+		 AND `username` like concat('%',#{params.username},'%')
+		</if>
+		<if test="params.pid !=null and params.pid!=''">
+		AND `pid` = #{params.pid}
+		</if>
+		<if test="params.ptitle !=null and params.ptitle!=''">
+		 AND `ptitle` like concat('%',#{params.ptitle},'%')
+		</if>
+		<if test="params.price !=null and params.price!=''">
+		AND `price` = #{params.price}
+		</if>
+		<if test="params.created !=null and params.created!=''">
+		AND `created` = #{params.created}
+		</if>
+		<if test="params.nowprice !=null and params.nowprice!=''">
+		AND `nowprice` = #{params.nowprice}
+		</if>
+		</if>
+		order by id desc
+		<if test="page!=null"> limit #{page},#{pagesize}
+		</if>
+	</select>
+
+	<delete id="delete" parameterType="java.lang.Long"> delete from auctionlog where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.ognice.domain.Auctionlog"> insert into auctionlog (
+		`id`
+				,
+		`uid`
+				,
+		`username`
+				,
+		`pid`
+				,
+		`ptitle`
+				,
+		`price`
+				,
+		`created`
+				,
+		`nowprice`
+				
+	) values (
+		#{id,jdbcType=INTEGER}
+				,
+		#{uid,jdbcType=INTEGER}
+				,
+		#{username,jdbcType=VARCHAR}
+				,
+		#{pid,jdbcType=INTEGER}
+				,
+		#{ptitle,jdbcType=VARCHAR}
+				,
+		#{price,jdbcType=DOUBLE}
+				,
+		#{created,jdbcType=TIMESTAMP}
+				,
+		#{nowprice,jdbcType=DOUBLE}
+				
+	)
+	</insert>
+
+	<update id="update" parameterType="com.ognice.domain.Auctionlog">
+		update auctionlog
+		<set>
+		<if test="id != null">
+		`id`= #{id,jdbcType=INTEGER},
+		</if>
+		<if test="uid != null">
+		`uid`= #{uid,jdbcType=INTEGER},
+		</if>
+		<if test="username != null">
+		`username`= #{username,jdbcType=VARCHAR},
+		</if>
+		<if test="pid != null">
+		`pid`= #{pid,jdbcType=INTEGER},
+		</if>
+		<if test="ptitle != null">
+		`ptitle`= #{ptitle,jdbcType=VARCHAR},
+		</if>
+		<if test="price != null">
+		`price`= #{price,jdbcType=DOUBLE},
+		</if>
+		<if test="created != null">
+		`created`= #{created,jdbcType=TIMESTAMP},
+		</if>
+		<if test="nowprice != null">
+		`nowprice`= #{nowprice,jdbcType=DOUBLE},
+		</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+
+</mapper>

@@ -1,0 +1,44 @@
+/*字符编码*/
+@charset "utf-8";
+
+/*------------------------------------------重置样式---------------------------*/
+body,button,dd,dl,dt,h1,h2,h3,h4,h5,h6,input,li,ol,p,td,ul{margin:0;padding:0}
+ol,ul { list-style:none;  }
+
+a {
+    color: #666;
+}
+a:hover,
+a:focus {
+    text-decoration: underline;
+    color: #cd0606;
+}
+body {
+    color: #666;
+    letter-spacing: 1px;
+    font-family:"微软雅黑";
+}
+:root {
+    cursor: default;
+}
+input {
+    border: none;
+    outline: none;
+}
+.submit {
+    background-color: #999;
+    border: none;
+    padding: 5px 12px;
+    color: #fff;
+    font-size: 14px;
+}
+.leftBar {
+    float: left;
+}
+.rightBar {
+    float: right;
+}
+.no-padding {
+    padding-left: 0;
+    padding-right: 0;
+}

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ognice.dao.MsgsMapper">
+	<resultMap id="BaseResultMap" type="com.ognice.domain.Msgs">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="msg" property="msg" jdbcType="VARCHAR" />
+		<result column="fromid" property="fromid" jdbcType="INTEGER" />
+		<result column="toid" property="toid" jdbcType="INTEGER" />
+		<result column="fromname" property="fromname" jdbcType="VARCHAR" />
+		<result column="toname" property="toname" jdbcType="VARCHAR" />
+		<result column="created" property="created" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		`id`
+		,
+		`msg`
+		,
+		`fromid`
+		,
+		`toid`
+		,
+		`fromname`
+		,
+		`toname`
+		,
+		`created`
+		
+	</sql>
+	<select id="selectMsgsById" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from msgs where id = #{id,jdbcType=BIGINT}
+	</select>
+	<select id="page" parameterType="com.ognice.controller.common.PageSearchParam" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from msgs where 1=1
+		<if test="params!=null">
+		<if test="params.id !=null and params.id!=''">
+		AND `id` = #{params.id}
+		</if>
+		<if test="params.msg !=null and params.msg!=''">
+		 AND `msg` like concat('%',#{params.msg},'%')
+		</if>
+		<if test="params.fromid !=null and params.fromid!=''">
+		AND `fromid` = #{params.fromid}
+		</if>
+		<if test="params.toid !=null and params.toid!=''">
+		AND `toid` = #{params.toid}
+		</if>
+		<if test="params.fromname !=null and params.fromname!=''">
+		 AND `fromname` like concat('%',#{params.fromname},'%')
+		</if>
+		<if test="params.toname !=null and params.toname!=''">
+		 AND `toname` like concat('%',#{params.toname},'%')
+		</if>
+		<if test="params.created !=null and params.created!=''">
+		AND `created` = #{params.created}
+		</if>
+		</if>
+		order by id desc
+		<if test="page!=null"> limit #{page},#{pagesize}
+		</if>
+	</select>
+
+	<delete id="delete" parameterType="java.lang.Long"> delete from msgs where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.ognice.domain.Msgs"> insert into msgs (
+		`id`
+				,
+		`msg`
+				,
+		`fromid`
+				,
+		`toid`
+				,
+		`fromname`
+				,
+		`toname`
+				,
+		`created`
+				
+	) values (
+		#{id,jdbcType=INTEGER}
+				,
+		#{msg,jdbcType=VARCHAR}
+				,
+		#{fromid,jdbcType=INTEGER}
+				,
+		#{toid,jdbcType=INTEGER}
+				,
+		#{fromname,jdbcType=VARCHAR}
+				,
+		#{toname,jdbcType=VARCHAR}
+				,
+		#{created,jdbcType=TIMESTAMP}
+				
+	)
+	</insert>
+
+	<update id="update" parameterType="com.ognice.domain.Msgs">
+		update msgs
+		<set>
+		<if test="id != null">
+		`id`= #{id,jdbcType=INTEGER},
+		</if>
+		<if test="msg != null">
+		`msg`= #{msg,jdbcType=VARCHAR},
+		</if>
+		<if test="fromid != null">
+		`fromid`= #{fromid,jdbcType=INTEGER},
+		</if>
+		<if test="toid != null">
+		`toid`= #{toid,jdbcType=INTEGER},
+		</if>
+		<if test="fromname != null">
+		`fromname`= #{fromname,jdbcType=VARCHAR},
+		</if>
+		<if test="toname != null">
+		`toname`= #{toname,jdbcType=VARCHAR},
+		</if>
+		<if test="created != null">
+		`created`= #{created,jdbcType=TIMESTAMP},
+		</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+
+</mapper>

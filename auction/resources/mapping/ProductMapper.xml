@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ognice.dao.ProductMapper">
+	<resultMap id="BaseResultMap" type="com.ognice.domain.Product">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="cateid" property="cateid" jdbcType="INTEGER" />
+		<result column="catename" property="catename" jdbcType="VARCHAR" />
+		<result column="uid" property="uid" jdbcType="INTEGER" />
+		<result column="username" property="username" jdbcType="VARCHAR" />
+		<result column="price" property="price" jdbcType="DOUBLE" />
+		<result column="type" property="type" jdbcType="INTEGER" />
+		<result column="picurl" property="picurl" jdbcType="VARCHAR" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="desc" property="desc" jdbcType="VARCHAR" />
+		<result column="created" property="created" jdbcType="TIMESTAMP" />
+		<result column="buyerid" property="buyerid" jdbcType="INTEGER" />
+		<result column="buyername" property="buyername" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="nowprice" property="nowprice" jdbcType="DOUBLE" />
+		<result column="enddate" property="enddate" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		`id`
+		,
+		`cateid`
+		,
+		`catename`
+		,
+		`uid`
+		,
+		`username`
+		,
+		`price`
+		,
+		`type`
+		,
+		`picurl`
+		,
+		`title`
+		,
+		`desc`
+		,
+		`created`
+		,
+		`buyerid`
+		,
+		`buyername`
+		,
+		`status`
+		,
+		`nowprice`
+		,
+		`enddate`
+		
+	</sql>
+	<select id="selectProductById" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from product where id = #{id,jdbcType=BIGINT}
+	</select>
+	<select id="page" parameterType="com.ognice.controller.common.PageSearchParam" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from product where 1=1
+		<if test="params!=null">
+		<if test="params.id !=null and params.id!=''">
+		AND `id` = #{params.id}
+		</if>
+		<if test="params.cateid !=null and params.cateid!=''">
+		AND `cateid` = #{params.cateid}
+		</if>
+		<if test="params.catename !=null and params.catename!=''">
+		 AND `catename` like concat('%',#{params.catename},'%')
+		</if>
+		<if test="params.uid !=null and params.uid!=''">
+		AND `uid` = #{params.uid}
+		</if>
+		<if test="params.username !=null and params.username!=''">
+		 AND `username` like concat('%',#{params.username},'%')
+		</if>
+		<if test="params.price !=null and params.price!=''">
+		AND `price` = #{params.price}
+		</if>
+		<if test="params.type !=null and params.type!=''">
+		AND `type` = #{params.type}
+		</if>
+		<if test="params.picurl !=null and params.picurl!=''">
+		 AND `picurl` like concat('%',#{params.picurl},'%')
+		</if>
+		<if test="params.title !=null and params.title!=''">
+		 AND `title` like concat('%',#{params.title},'%')
+		</if>
+		<if test="params.desc !=null and params.desc!=''">
+		 AND `desc` like concat('%',#{params.desc},'%')
+		</if>
+		<if test="params.created !=null and params.created!=''">
+		AND `created` = #{params.created}
+		</if>
+		<if test="params.buyerid !=null and params.buyerid!=''">
+		AND `buyerid` = #{params.buyerid}
+		</if>
+		<if test="params.buyername !=null and params.buyername!=''">
+		 AND `buyername` like concat('%',#{params.buyername},'%')
+		</if>
+		<if test="params.status !=null and params.status!=''">
+		 AND `status` =#{params.status}
+		</if>
+		<if test="params.nowprice !=null and params.nowprice!=''">
+		AND `nowprice` = #{params.nowprice}
+		</if>
+		<if test="params.enddate !=null and params.enddate!=''">
+		AND `enddate` = #{params.enddate}
+		</if>
+		</if>
+		order by id desc
+		<if test="page!=null"> limit #{page},#{pagesize}
+		</if>
+	</select>
+
+	<delete id="delete" parameterType="java.lang.Long"> delete from product where id = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.ognice.domain.Product"> insert into product (
+		`id`
+				,
+		`cateid`
+				,
+		`catename`
+				,
+		`uid`
+				,
+		`username`
+				,
+		`price`
+				,
+		`type`
+				,
+		`picurl`
+				,
+		`title`
+				,
+		`desc`
+				,
+		`created`
+				,
+		`buyerid`
+				,
+		`buyername`
+				,
+		`status`
+				,
+		`nowprice`
+				,
+		`enddate`
+				
+	) values (
+		#{id,jdbcType=INTEGER}
+				,
+		#{cateid,jdbcType=INTEGER}
+				,
+		#{catename,jdbcType=VARCHAR}
+				,
+		#{uid,jdbcType=INTEGER}
+				,
+		#{username,jdbcType=VARCHAR}
+				,
+		#{price,jdbcType=DOUBLE}
+				,
+		#{type,jdbcType=INTEGER}
+				,
+		#{picurl,jdbcType=VARCHAR}
+				,
+		#{title,jdbcType=VARCHAR}
+				,
+		#{desc,jdbcType=VARCHAR}
+				,
+		#{created,jdbcType=TIMESTAMP}
+				,
+		#{buyerid,jdbcType=INTEGER}
+				,
+		#{buyername,jdbcType=VARCHAR}
+				,
+		#{status,jdbcType=INTEGER}
+				,
+		#{nowprice,jdbcType=DOUBLE}
+				,
+		#{enddate,jdbcType=TIMESTAMP}
+				
+	)
+	</insert>
+
+	<update id="update" parameterType="com.ognice.domain.Product">
+		update product
+		<set>
+		<if test="id != null">
+		`id`= #{id,jdbcType=INTEGER},
+		</if>
+		<if test="cateid != null">
+		`cateid`= #{cateid,jdbcType=INTEGER},
+		</if>
+		<if test="catename != null">
+		`catename`= #{catename,jdbcType=VARCHAR},
+		</if>
+		<if test="uid != null">
+		`uid`= #{uid,jdbcType=INTEGER},
+		</if>
+		<if test="username != null">
+		`username`= #{username,jdbcType=VARCHAR},
+		</if>
+		<if test="price != null">
+		`price`= #{price,jdbcType=DOUBLE},
+		</if>
+		<if test="type != null">
+		`type`= #{type,jdbcType=INTEGER},
+		</if>
+		<if test="picurl != null">
+		`picurl`= #{picurl,jdbcType=VARCHAR},
+		</if>
+		<if test="title != null">
+		`title`= #{title,jdbcType=VARCHAR},
+		</if>
+		<if test="desc != null">
+		`desc`= #{desc,jdbcType=VARCHAR},
+		</if>
+		<if test="created != null">
+		`created`= #{created,jdbcType=TIMESTAMP},
+		</if>
+		<if test="buyerid != null">
+		`buyerid`= #{buyerid,jdbcType=INTEGER},
+		</if>
+		<if test="buyername != null">
+		`buyername`= #{buyername,jdbcType=VARCHAR},
+		</if>
+		<if test="status != null">
+		`status`= #{status,jdbcType=INTEGER},
+		</if>
+		<if test="nowprice != null">
+		`nowprice`= #{nowprice,jdbcType=DOUBLE},
+		</if>
+		<if test="enddate != null">
+		`enddate`= #{enddate,jdbcType=TIMESTAMP},
+		</if>
+		</set>
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+
+</mapper>
